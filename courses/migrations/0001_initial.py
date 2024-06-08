@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Course",
             fields=[
-                (
+                (   
                     "id",
                     models.BigAutoField(
                         auto_created=True,
