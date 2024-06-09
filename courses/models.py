@@ -9,7 +9,7 @@ class Course(models.Model):
     description = models.TextField(max_length=250, blank=True, null=True)
     image = models.ImageField(upload_to="courses/%Y/%m/%d/", default="courses/default_course_image.png")
     date=models.DateTimeField(auto_now=True)
-    avaialable=models.BooleanField(default=True)
+    available=models.BooleanField(default=True)
 
     
     def __str__(self):
