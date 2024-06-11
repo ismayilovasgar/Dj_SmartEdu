@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Course, Category
 
 
 # Register your models here.
@@ -14,3 +14,8 @@ class CourseAdmin(admin.ModelAdmin):
         "name",
         "description",
     )
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
