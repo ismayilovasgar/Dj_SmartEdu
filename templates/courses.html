@@ -10,6 +10,7 @@
     <div id="overviews" class="section wb">
         <div class="container">
             <div class="row"> 
+
                 <div class="col-lg-9 blog-post-single">
 					<div class="row"> 
 						{% for course in courses %}
@@ -37,7 +38,6 @@
 						</div>
 					 {% endfor %}	
 					</div>
-
 					<div class="blog-author">
 						<div class="author-bio">
 							<h3 class="author_name"><a href="#">Tom Jobs</a></h3>
@@ -47,7 +47,7 @@
 							</p>
 						</div>
 						<div class="author-desc">
-							<img src="{% static 'images/author.jpg' %}" alt="about author">
+							<img src="/static/images/author.jpg" alt="about author">
 							<ul class="author-social">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -55,7 +55,9 @@
 							</ul>
 						</div>
 					</div>
+
                 </div>
+
 				<div class="col-lg-3 col-12 right-single">
 					<div class="widget-search">
 						<div class="site-search-area">
