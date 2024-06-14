@@ -10,8 +10,8 @@ def about__page(request):
     return render(request, "about.html")
 
 
-def courses__page(request):
-    return render(request, "courses.html")
+# def courses__page(request):
+#     return render(request, "courses.html")
 
 
 def teachers__page(request):
