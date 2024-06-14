@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Course, Category
+from .models import Course, Category, Tag
 
 
 # Register your models here.
+# * oneToMany or manyToOne
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = (
@@ -18,4 +19,10 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+
+
+# * manyToMany
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
