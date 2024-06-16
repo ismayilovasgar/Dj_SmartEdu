@@ -32,7 +32,7 @@ class Course(models.Model):
     tag = models.ManyToManyField(Tag, blank=True, null=True)
     description = models.TextField(max_length=250, blank=True, null=True)
     image = models.ImageField(
-        upload_to="courses/%Y/%m/%d/", default="courses/default_course_image.png"
+        upload_to="courses/%Y/%m/%d/", default="default_course_image.png"
     )
     date = models.DateTimeField(auto_now=True)
     available = models.BooleanField(default=True)
