@@ -29,7 +29,7 @@ class Course(models.Model):
         help_text="Kurs Adini Yaziniz",
     )
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, null=True)
-    tags=models.ManyToManyField(Tag,blank=True,null=True)
+    tag = models.ManyToManyField(Tag, blank=True, null=True)
     description = models.TextField(max_length=250, blank=True, null=True)
     image = models.ImageField(
         upload_to="courses/%Y/%m/%d/", default="courses/default_course_image.png"

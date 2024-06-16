@@ -80,19 +80,15 @@
 					<div class="widget-tags">
 						<h3 class="widget-title">Search Tags</h3>
 						<ul class="tags">
-							<li><a href="#"><b>business</b></a></li>
-							<li><a href="#"><b>jquery</b></a></li>
-							<li><a href="#">corporate</a></li>
-							<li><a href="#">portfolio</a></li>
-							<li><a href="#">css3</a></li>
-							<li><a href="#"><b>theme</b></a></li>
-							<li><a href="#"><b>html5</b></a></li>
-							<li><a href="#"><b>mysql</b></a></li>
-							<li><a href="#">multipurpose</a></li>
-							<li><a href="#">responsive</a></li>
-							<li><a href="#">premium</a></li>
-							<li><a href="#">javascript</a></li>
-							<li><a href="#"><b>Best jQuery</b></a></li>
+							{% for tag in tags %}
+								<li><a href="{% url 'courses_by_tag' tag.slug  %}">
+									{% if tag.slug in request.path %}
+									<b>{{tag.name}}</b>
+									{% else %}
+									{{tag.name}}
+									{% endif %}
+								</a></li>
+							{% endfor %}
 						</ul>
 					</div>
 				</div>
