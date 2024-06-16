@@ -1,11 +1,15 @@
 from django.shortcuts import render
-from .models import Course
+from .models import *
 
 
 # Create your views here.
 def courses__list(request):
     courses = Course.objects.all()
-    context = {"courses": courses}
+    categories = Category.objects.all()
+    context = {
+        "courses": courses,
+        "categories": categories,
+    }
     return render(request, "courses.html", context)
 
 
@@ -17,5 +21,10 @@ def course__detail(request, category_slug, course_id):
 
 def category_detail(request, category_slug):
     courses = Course.objects.filter(category__slug=category_slug)
-    context = {"courses": courses}
+    categories = Category.objects.all()
+
+    context = {
+        "courses": courses,
+        "categories": categories,
+    }
     return render(request, "courses.html", context)
