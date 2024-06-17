@@ -11,8 +11,8 @@ from courses.models import *
 #     return render(request, "about.html")
 
 
-def teachers__page(request):
-    return render(request, "teacher.html")
+# def teachers__page(request):
+#     return render(request, "teacher.html")
 
 
 def contact__page(request):

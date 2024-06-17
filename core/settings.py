@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     # MY APP
     "pages",
     "courses",
+    "teachers",
+    # My Install
+    "django_cleanup",
 ]
 
 MIDDLEWARE = [
