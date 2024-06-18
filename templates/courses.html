@@ -38,7 +38,7 @@
 						</div>
 					 {% endfor %}	
 					</div>
-					<div class="blog-author">
+					{% comment %} <div class="blog-author">
 						<div class="author-bio">
 							<h3 class="author_name"><a href="#">Tom Jobs</a></h3>
 							<h5>CEO at <a href="#">SmartEDU</a></h5>
@@ -54,14 +54,15 @@
 								<li><a href="#"><i class="fa fa-skype"></i></a></li>
 							</ul>
 						</div>
-					</div>
+					</div> {% endcomment %}
 
                 </div>
 
 				<div class="col-lg-3 col-12 right-single">
 					<div class="widget-search">
 						<div class="site-search-area">
-							<form method="get" id="site-searchform" action="#">
+							<form method="post" id="site-searchform" action="{% url 'search' %}">
+								{% csrf_token %}
 								<div>
 									<input class="input-text form-control" name="search-k" id="search-k" placeholder="Search keywords..." type="text">
 									<input id="searchsubmit" value="Search" type="submit">
