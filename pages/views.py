@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.views.generic.edit import FormView
 from courses.models import *
+from .forms import *
+from django.urls import reverse_lazy
 
 # *Function base template view
 # def index__page(request):
@@ -32,3 +35,13 @@ class IndexView(TemplateView):
         context["courses"] = Course.objects.filter(available=True).order_by("-date")[:2]
         context["total_course"] = Course.objects.filter(available=True).count()
         return context
+
+
+class ContactView(FormView):
+    template_name = "contact.html"
+    form_class = ContactForm
+    success_url = reverse_lazy("contact")
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

@@ -12,5 +12,9 @@ urlpatterns = [
     # path("courses/", courses__page, name="courses"),
     path("teachers/", include("teachers.urls")),
     # path("teachers/", TeacherListView.as_view(), name="teacher-list"),
-    path("contact/", contact__page, name="contact"),
+    path("contact/", ContactView.as_view(), name="contact"),
+    # *
+    # *
+    # *
+    # *path(route,view,op(kisayol ismi))
 ]
