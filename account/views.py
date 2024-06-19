@@ -36,7 +36,6 @@ def user__register(request):
             form.save()
             messages.success(request, "Account has been created, You can Login !")
             return redirect("login")
-
     else:
         form = RegisterForm()
 
