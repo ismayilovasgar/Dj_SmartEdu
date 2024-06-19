@@ -20,7 +20,7 @@ class ContactForm(forms.ModelForm):
         )
     )
     email = forms.EmailField(
-        widget=forms.TextInput(
+        widget=forms.EmailInput(
             attrs={
                 "class": "form-control",
                 "placeholder": "EmailXXX",
@@ -46,4 +46,5 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = "__all__"
+        # fields = "__all__"
+        fields = ["first_name", "last_name", "email", "phone", "message"]

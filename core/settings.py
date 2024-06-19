@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "pages",
     "courses",
     "teachers",
+    "account",
     # My Install
     "django_cleanup",
 ]

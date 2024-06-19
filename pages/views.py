@@ -4,6 +4,7 @@ from django.views.generic.edit import FormView
 from courses.models import *
 from .forms import *
 from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 
 # *Function base template view
 # def index__page(request):
@@ -37,10 +38,11 @@ class IndexView(TemplateView):
         return context
 
 
-class ContactView(FormView):
+class ContactView(SuccessMessageMixin, FormView):
     template_name = "contact.html"
     form_class = ContactForm
     success_url = reverse_lazy("contact")
+    success_message = "We received your messages."
 
     def form_valid(self, form):
         form.save()
