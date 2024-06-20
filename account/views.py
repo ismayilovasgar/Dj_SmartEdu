@@ -47,4 +47,5 @@ def user__dashboard(request):
 
 
 def user__logout(request):
-    pass
+    logout(request)
+    return redirect("index")
