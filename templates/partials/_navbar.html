@@ -24,13 +24,11 @@
                     {% if user.is_authenticated %}
                     <li><a class="hover-btn-new log orange mr-3" href="{% url 'dashboard' %}" ><span>{{user.username}}</span></a></li>
                     {% comment %} <li><a class="hover-btn-new log orange mr-3" href="{% url 'logout' %}" ><span><i class="fa fa-sign-out"></i></span></a></li> {% endcomment %}
-                    <li><a class="hover-btn-new log orange mr-3" href="javascript:{document.getElementById('logout').submit}" ><span><i class="fa fa-sign-out"></i></span></a>
-                    <form action="{% url 'logout' %}" method="POST" id='logout'>
-                        {% csrf_token %}
-                        <input type="hidden" >
-                    </form>
-                    
-                    
+                    <li><a class="hover-btn-new log orange mr-3" href="javascript:{document.getElementById('logout').submit()}" ><span><i class="fa fa-sign-out"></i></span></a>
+                        <form action="{% url 'logout' %}" method="POST" id='logout'>
+                            {% csrf_token %}
+                            <input type="hidden" >
+                        </form>
                     </li>
 
                     {% else %}

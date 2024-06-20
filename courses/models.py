@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from teachers.models import Teacher
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -34,6 +35,9 @@ class Course(models.Model):
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, null=True)
     tag = models.ManyToManyField(Tag, blank=True, null=True)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True)
+    students = models.ManyToManyField(
+        User, blank=True, null=True, related_name="courses_joined"
+    )
     # *  ************
 
     description = models.TextField(max_length=250, blank=True, null=True)

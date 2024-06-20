@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -42,10 +43,16 @@ def user__register(request):
     return render(request, "register.html", {"form": form})
 
 
+@login_required(login_url="login")
 def user__dashboard(request):
-    pass
+    current_user = request.user
+    courses = current_user.courses_joined.all()
+    context = {"courses": courses}
+    
+    return render(request, "dashboard.html", context)
 
 
+@login_required(login_url="login")
 def user__logout(request):
     logout(request)
     return redirect("index")
