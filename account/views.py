@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from courses.models import Course
 
 
 # Create your views here.
@@ -48,7 +49,7 @@ def user__dashboard(request):
     current_user = request.user
     courses = current_user.courses_joined.all()
     context = {"courses": courses}
-    
+
     return render(request, "dashboard.html", context)
 
 
@@ -56,3 +57,14 @@ def user__dashboard(request):
 def user__logout(request):
     logout(request)
     return redirect("index")
+
+
+@login_required(login_url="login")
+def enroll_the_course(request):
+    course_id = request.POST["course_id"]
+    user_id = request.POST["user_id"]
+
+    course = Course.objects.get(id=course_id)
+    user = User.objects.get(id=user_id)
+    course.students.add(user)
+    return redirect("dashboard")

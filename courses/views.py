@@ -62,6 +62,9 @@ def search(request):
     return render(request, "courses.html", context)
 
 
+
+
+
 # def category__list(request, category_slug):
 #     courses = Course.objects.filter(category__slug=category_slug)
 #     categories = Category.objects.all()
