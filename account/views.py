@@ -4,6 +4,7 @@ from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from courses.models import Course
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -47,6 +48,7 @@ def user__register(request):
 @login_required(login_url="login")
 def user__dashboard(request):
     current_user = request.user
+
     courses = current_user.courses_joined.all()
     context = {"courses": courses}
 
