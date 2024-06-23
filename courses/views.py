@@ -1,8 +1,6 @@
 from django.shortcuts import get_object_or_404, render, get_list_or_404
 from .models import *
-
-
-# Create your views here.
+from django.contrib.auth.models import User
 
 
 def courses__list(request, category_slug=None, tag_slug=None):
@@ -34,10 +32,12 @@ def courses__list(request, category_slug=None, tag_slug=None):
 
         # *Teacher Way
         # if current_user.is_authenticated:
-        #     enrolled_courses = current_user.courses__joined.all()
+        #     enrolled_courses = current_user.courses_joined.all()
         #     courses = Course.objects.all().order_by("-date")
         #     for course in enrolled_courses:
         #         courses = courses.exclude(id=course.id)
+        # else:
+        #     courses = Course.objects.all().order_by('-date')
 
         # * My Way
         if current_user.is_authenticated:
@@ -57,14 +57,18 @@ def courses__list(request, category_slug=None, tag_slug=None):
 def course__detail(request, category_slug, course_id):
     course = Course.objects.get(category__slug=category_slug, id=course_id)
     categories = Category.objects.all()
+    tags = Tag.objects.all()
 
-    current_user = request.user
-    enrolled_courses = Course.objects.filter(students=current_user)
+    if request.user.is_authenticated:
+        enrolled_courses = request.user.courses_joined.all()
+    else:
+        enrolled_courses = Course.objects.all().order_by("-date")
 
     context = {
         "course": course,
         "categories": categories,
-        "enrolled": enrolled_courses,
+        "tags": tags,
+        "enrolled_courses": enrolled_courses,
     }
     return render(request, "course.html", context)
 
@@ -80,43 +84,3 @@ def search(request):
         "courses": courses,
     }
     return render(request, "courses.html", context)
-
-
-# def category__list(request, category_slug):
-#     courses = Course.objects.filter(category__slug=category_slug)
-#     categories = Category.objects.all()
-#     tags = Tag.objects.all()
-
-#     context = {
-#         "courses": courses,
-#         "categories": categories,
-#         "tags": tags,
-#     }
-#     return render(request, "courses.html", context)
-
-
-# def tag__list(request, tag_slug):
-#     courses = Course.objects.filter(tag__slug=tag_slug)
-#     categories = Category.objects.all()
-#     tags = Tag.objects.all()
-
-
-#     context = {
-#         "courses": courses,
-#         "categories": categories,
-#         "tags": tags,
-#     }
-#     return render(request, "courses.html", context)
-
-
-# def courses__list(request):
-#     courses = Course.objects.all()
-#     categories = Category.objects.all()
-#     tags = Tag.objects.all()
-
-#     context = {
-#         "courses": courses,
-#         "categories": categories,
-#         "tags": tags,
-#     }
-#     return render(request, "courses.html", context)
