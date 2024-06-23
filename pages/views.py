@@ -5,6 +5,8 @@ from courses.models import *
 from .forms import *
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.models import User
+from teachers.models import *
 
 # *Function base template view
 # def index__page(request):
@@ -35,6 +37,8 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["courses"] = Course.objects.filter(available=True).order_by("-date")[:2]
         context["total_course"] = Course.objects.filter(available=True).count()
+        context["total_students"] = User.objects.all().count()
+        context["total_teachers"] = Teacher.objects.all().count()
         return context
 
 

@@ -6,15 +6,9 @@ from .models import Course, Category, Tag
 # * oneToMany or manyToOne
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "available",
-    )
+    list_display = ("name", "available", "teacher")
     list_filter = ("available",)
-    search_fields = (
-        "name",
-        "description",
-    )
+    search_fields = ("name", "description")
 
 
 @admin.register(Category)
