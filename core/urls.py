@@ -26,8 +26,8 @@ from pages.urls import *
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("pages.urls")),
     path("courses/", include("courses.urls")),
     path("account/", include("account.urls")),
     # path("teachers/", include("teachers.urls")),
+    path("", include("pages.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

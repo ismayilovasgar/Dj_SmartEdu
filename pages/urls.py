@@ -10,7 +10,7 @@ urlpatterns = [
     # path("about/", about__page, name="about"),
     path("about/", AboutView.as_view(), name="about"),
     # path("courses/", courses__page, name="courses"),
-    path("teachers/", include("teachers.urls")),
+    path("/teachers", include("teachers.urls")),
     # path("teachers/", TeacherListView.as_view(), name="teacher-list"),
     path("contact/", ContactView.as_view(), name="contact"),
     # *
